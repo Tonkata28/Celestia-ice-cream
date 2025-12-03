@@ -1,0 +1,109 @@
+@keyframes transformToSticky {
+  from {
+    background-color: transparent;
+  }
+  to {
+    width: 90%;
+    background-color: var(--secondary-color);
+    border-radius: 2em;
+    top: 1.3em;
+    padding: 0.3em var(--padding-left-right);
+  }
+}
+
+@keyframes transitionInFromTop {
+  from {
+    transform: translateY(-150%);
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+
+header {
+  position: sticky;
+  top: 0; /*required for position: sticky; to work*/
+  align-self: center;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--padding-left-right);
+  margin-bottom: 4em;
+  width: 100%;
+  animation:
+    transitionInFromTop 0.7s ease-out both,
+    transformToSticky auto linear both;
+  
+  /* sticky navigation*/
+  animation-timeline: auto, scroll(root block);
+  animation-range: var(--padding-top-body) 3%;
+}
+
+header a:has(h1){
+  border: 0.2rem solid transparent;
+  border-radius: 1em;
+  padding: 0.2rem 0.5rem;
+  transition: border-color 0.2s ease-in;
+
+  &:focus {
+    border-color: var(--primary-color);
+  }
+}
+
+header h1 {
+  font-size: 1.8em;
+}
+
+header h1 span {
+  font-size: 1.8em;
+}
+
+header nav ul {
+  display: flex;
+  gap: 2em;
+}
+
+header nav ul li,
+header nav ul a{
+  display: block;
+}
+
+header nav ul a{
+  font-weight: 600;
+}
+
+header .shopping-cart {
+  display: flex;
+  gap: 1.3em;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border-radius: 3em;
+  padding: 0 0.9em;
+  font-size: 0.8em;
+}
+
+header .shopping-cart a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.4em;
+  background-color: var(--primary-color);
+  color: white;
+  width: 2.4em;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  margin: 0.3em;
+  transition: background-color 0.3s ease-in,
+  color 0.3s ease-in;
+
+  &:hover,
+  &:focus {
+    color: var(--primary-color);
+    background-color: white;
+  }
+}

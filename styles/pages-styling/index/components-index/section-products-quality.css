@@ -1,0 +1,179 @@
+main .products-quality {
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  view-timeline: --products-quality-timeline;
+  
+  padding: 0 var(--padding-left-right);
+  gap: 15em;
+  overflow: clip;
+  position: relative;
+  width: 120%;
+  aspect-ratio: 1.9 / 1;
+  background-color: var(--secondary-color);
+  border-radius: 50%;
+  border: 1em solid rgb(249, 228, 199);
+  
+  &::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 50%;
+    border-radius: inherit;
+    left: 50%;
+    top: 100%;
+    transform: translateX(-50%) translateY(-100%);
+    background-color: white;
+    z-index: 1;
+    filter: blur(1px);
+  }
+}
+
+.products-quality .text {
+  display: flex;
+  gap: 40%;
+  justify-content: center;
+}
+
+.products-quality .text h2 {
+  font-size: 3em;
+  animation: makeSmaller auto linear both;
+  animation-timeline: --products-quality-timeline;
+  animation-range: entry 45% entry 85%;
+  
+  & span{
+    display: block;
+    background-color: var(--background-primary-color);
+    border: 0.3rem solid var(--primary-color);
+    border-radius: 0.5em;
+    padding: 0.3em;
+    text-align: center;
+    rotate: -5deg;
+    transition: 
+    rotate 0.3s ease-in,
+    background-color 0.3s ease-in;
+    
+    &:hover {
+      rotate: 5deg;
+      background-color: #faf4e6;
+    }
+  }
+}
+
+@keyframes makeBigger {
+  from {
+    scale: 0.1;
+    opacity: 0;
+  }
+
+  to {
+    scale: 1;
+    opacity: 1;
+  }
+}
+
+.products-quality .text p{
+  max-width: 22ch;
+  text-align: left;
+  font-size: 1.2em;
+  line-height: 1.4;
+  animation: transitionInFromRight auto ease-out both;
+  animation-timeline: --products-quality-timeline;
+  animation-range: entry 30% entry 85%;
+}
+
+.products-quality .wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 10;
+  
+  /* &::after {
+    position: absolute;
+    content: "tap each vitamin to learn more";
+    text-transform: uppercase;
+    text-align: center;
+    align-content: center;
+    padding: 0.4em 2em;
+    font-size: 0.9em;
+    background-color: white;
+    width: auto;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%) translateY(calc(100% - 0.1em));
+    border-radius: 0 0 1em 1em;
+    border: 0.5rem solid var(--background-primary-color);
+    border-top: none;
+  } */
+
+  & .product-img {
+    position: relative;
+    --product-img-width: 45vw;
+    width: var(--product-img-width);
+    
+    animation: makeBigger auto linear both;
+    animation-timeline: --products-quality-timeline;
+    animation-range: entry 75% entry 100%;
+    
+    & img{
+      display: block;
+      width: 100%;
+      height: auto;
+      position: absolute;
+      bottom: calc(100% - 6em);      
+    }
+
+    &::before { /*shadow*/  
+      content: "";
+      background-image: url("/media/images/yoghurt_bowl.png");
+      background-position: center;
+      background-size: contain;
+      background-repeat: no-repeat;
+
+      inset: 0;
+      width: calc(0.6 * var(--product-img-width)); 
+      height: 30em;
+      position: absolute;
+      left: 50%;
+      transform: scaleY(-1) translateX(-50%);
+      filter: blur(1px);
+      opacity: 0.3;
+    }
+  }
+
+  & .products-nutrition {
+    display: flex;
+    border: 0.5rem solid var(--background-primary-color);
+    border-radius: 10em;
+    padding: 1.3em;
+    background-color: white;
+    z-index: 10;
+    animation: transitionInFromBottom auto linear both;
+    animation-timeline: --products-quality-timeline;
+    animation-range: entry 75% entry 100%;
+
+    
+    & .nutrient {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 1em;
+      padding: 0 2em;
+      
+      &:not(:last-child) {
+        border-right: 2px solid var(--background-primary-color);
+      }
+      
+      & p {
+        font-size: 1.5em;
+      }
+      
+      & h3 {
+        font-weight: 400;
+      }
+    }
+  }
+}

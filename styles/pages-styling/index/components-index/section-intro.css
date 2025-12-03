@@ -1,0 +1,302 @@
+main .intro {
+  display: flex;
+  gap: 3em;
+  padding: 0 var(--padding-left-right);
+  height: 80vh;
+
+  & > * {
+    flex: 1 1 50%;
+  }
+}
+
+@keyframes transitionInFromLeft {
+  from {
+    transform: translateX(-150%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.intro .left-content {
+  margin-top: 5em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  animation: transitionInFromLeft 0.7s ease-out both;
+}
+
+.intro .left-content .main-content{
+  display: flex;
+  flex-direction: column;
+}
+
+@keyframes typeWriter {
+  from {
+    opacity: 1;
+  }
+  
+  to {
+    opacity: 1;
+    width: 100%;
+    border: 0;
+  }
+}
+
+.intro .left-content .main-content h2{
+  font-size: 4em;
+  transition: height 0.5s linear;
+  line-height: 1;
+  
+  & span {
+    line-height: 1;
+    --base-delay: 1s;
+    --letter-duration: 0.2s;
+    display: inline-block;
+
+    width: 0;
+    opacity: 0;
+    overflow: clip;
+    max-width: fit-content;
+    border-right: 3px solid black;
+  }
+
+  & span:nth-of-type(1) {
+    animation: typeWriter 
+      calc(var(--letter-duration) * 5)
+      var(--base-delay) steps(20) forwards;
+  }
+
+  & span:nth-of-type(2) {
+    animation: typeWriter 
+      calc(var(--letter-duration) * 4) 
+      calc(var(--base-delay) + var(--letter-duration) * 4) steps(15) forwards;
+  }
+
+ & span:nth-of-type(3) {
+    animation: typeWriter 
+      calc(var(--letter-duration) * 2)
+      calc(var(--base-delay) + var(--letter-duration) * 8) steps(5) forwards;
+  }
+
+  & span:nth-of-type(4) {
+    animation: typeWriter 
+      calc(var(--letter-duration) * 4) 
+      calc(var(--base-delay) + var(--letter-duration) * 11) steps(15) forwards;
+  }
+
+  & span:nth-of-type(5) {
+    animation: typeWriter 
+    calc(var(--letter-duration) * 6) 
+    calc(var(--base-delay) + var(--letter-duration) * 14) steps(20) forwards;
+  }
+}
+
+.intro .left-content .main-content p {
+  font-size: 1em;
+  max-width: 40ch;
+  line-height: 1.3;
+  font-style: oblique;
+  margin-top: 0.5em;
+}
+
+.intro .left-content .main-content .cta-buttons {
+  display: flex;
+  margin-top: 2em;
+  gap: 1em;
+
+  & .cta{
+    background-color: transparent;
+    border: 1px solid var(--primary-color);
+    border-radius: 2em;
+    padding: 0.5em 1em;
+    font-size: 1.15em;
+    transition: border-color 0.3s ease-in,
+    color 0.3s ease-in,
+    background-color 0.3s ease-in;
+    
+    &:hover,
+    &:focus{
+      background-color: white;
+      color: var(--primary-color);
+      border-color: white;
+    }
+  }
+
+  & .cta-first{
+    color: white;
+    background-color: var(--primary-color);
+    display: flex;
+    gap: 0.8em;
+    align-items: center;
+  }
+}
+
+.intro .left-content .review-intro {
+  display: flex;
+  align-self: flex-start;
+  gap: 0.5em;
+  transition:
+  translate 0.2s ease-in,
+  scale 0.2s ease-in;
+
+  &:hover,
+  &:focus{
+    translate: 5% -5%;
+    scale: 1.1;
+  }
+}
+
+.intro .left-content .review-intro .img-placeholder {
+  height: 100%;
+  aspect-ratio: 1 / 1;
+  background-color: white;
+  border-radius: 0.8em;
+  background-image: url(../../../../media/images/ice_cream_cone_footer.png);
+  background-size: 75%;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.intro .left-content .review-intro .review-desc {
+  border: 1px solid white;
+  border-radius: 0.8em;
+  padding: 1em 1.5em 1em 0.5em;
+  position: relative;
+  max-width: 30ch;
+  line-height: 1.3;
+  font-size: 0.9em;
+
+  & .icon {
+    position: absolute;
+    right: 1rem;
+    bottom: -1rem;
+    font-size: 2.5em;
+  }
+}
+
+@keyframes transitionInFromRight {
+  from {
+    transform: translateX(150%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+.intro .right-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  animation: transitionInFromRight 0.7s ease-out;
+  position: relative;
+  
+  &::before {
+    content: "";
+    inset: 0;
+    position: absolute;
+    z-index: 100;
+    background-image: url(../../../../media/images/ice_cream_woman.png);
+    background-size: 140%;
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    transition: background-image 0.3s ease-in;
+  }
+}
+
+.intro .right-content .flex-row {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: clip;
+}
+
+@keyframes transitionInFromBottom {
+  from {
+    transform: translateY(150%);
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.intro .right-content .flex-row:nth-child(1){
+  display: flex;
+  gap: 1em;
+  flex-basis: 45%;
+  
+  & .flex-item {
+    flex: 1 1 50%;
+    aspect-ratio: 1 / 1;
+    background-color: var(--primary-color);
+    border-radius: 1em;
+    position: relative;
+    overflow: clip;
+
+    &.left p{
+      animation: transitionInFromBottom 0.7s 0.3s ease-out both;
+      position: relative;
+      z-index: 0;
+      top: 15%;
+      left: 10%;
+      font-size: 0.9em;
+      text-align: right;
+      display: inline-block;
+      line-height: 1.3;
+      
+      & span {
+        font-size: 4em;
+      }
+    }
+    
+    &.left::before {
+      content: "";
+      position: absolute;
+      width: 140%;
+      aspect-ratio: 1 / 1;
+      background-color: white;
+      border: 1em solid pink;
+      border-bottom-right-radius: 50%;
+      translate: -45% -43%;
+    }
+    
+    &.right::before{
+      content: "";
+      position: absolute;
+      inset: 0;
+      animation: transitionInFromBottom 0.7s 0.3s ease-out both;
+      background-image: url(../../../../media/images/ice_cream_cone_main.png);
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: 75% bottom;
+    }
+  }
+}
+
+.intro .right-content .flex-row:nth-child(2){
+  background-color: white;
+  border-radius: 1em;
+  flex-basis: 55%;
+  position: relative;
+  text-align: center;
+  
+  &::before {
+    content: "";
+    position: absolute;
+    width: 110%;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    translate: -50% 70%;
+    left: 50%;
+    bottom: 0;
+    background-color: var(--primary-color);
+    border: 1em solid pink;
+  }
+}

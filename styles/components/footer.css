@@ -1,0 +1,252 @@
+footer {
+  --footer-height: 60ch;
+  margin-top: 8em;
+  display: flex;
+  flex-direction: column;
+  height: var(--footer-height);
+  background-image: url(../../media/images/ice_cream_cone_footer.png);
+  background-size: calc(var(--footer-height) + 8em);
+  background-position: 40% -13%;
+  background-repeat: no-repeat;
+  padding: 0 var(--padding-left-right) 2em;
+  overflow: clip;
+  view-timeline: --footer-view-timeline;
+
+  & .background-lightning {
+    top: 70%;
+    left: 33%;
+    z-index: -1;
+  }
+}
+
+footer h2 {
+  font-size: 3em;
+  text-align: center;
+
+  animation: makeSmaller auto linear both; /*animation is defined in .best-sellers styles*/
+  animation-timeline: --footer-view-timeline;
+  animation-range: entry 10% entry 50%;
+}
+
+footer .footer-content {
+  flex-grow: 1;
+  display: flex;
+  justify-content: space-between;
+}
+
+footer .footer-content .column {
+  display: flex;
+  flex-direction: column;
+  gap: 3em;
+  flex: 1 1 30%;
+}
+
+.footer-content .left-side,
+.footer-content .right-side {
+  padding-top: 15ch;
+  justify-content: space-between;
+}
+
+.left-side .content{
+  display: flex;
+  gap: 3em;
+
+  & .footer-navigation {
+    display: flex;
+    flex-direction: column;
+  }
+
+  & .footer-navigation li,
+  .footer-navigation a {
+    display: inline-block;
+  }
+
+  & .footer-navigation a{
+    margin-bottom: 1.3em;
+  }
+}
+
+.left-side h3 {
+  font-size: 1.7em;
+  position: relative;
+  top: 0.5em;
+  & span {
+    font-size: 1.4em;
+  }
+}
+
+.footer-content .social-media-icons {
+  display: flex;
+  gap: 1em;
+  justify-content: center;
+  position: relative;
+  top: 1em;
+  right: 1em;
+}
+
+.social-media-icons .icon {
+  padding: 0.7em;
+  border-radius: 50%;
+  border: 1px solid var(--primary-color);
+  background-color: var(--background-primary-color);
+  font-size: 1.2em;
+  cursor: pointer;
+  transition: 
+  border-color 0.3s ease-in,
+  background-color 0.3s ease-in;
+
+  &:hover,
+  &:focus{
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+  }
+}
+
+.right-side .content p {
+  margin-bottom: 2em;
+  letter-spacing: 0.04em;
+  font-size: 1.05em;
+  line-height: 1.5;
+}
+
+@keyframes BorderActivation {
+  from {
+    width: 0;
+    height: 0;
+    border-color: var(--primary-color);
+  }
+  
+  33% {
+    width: 0;
+    height: 100%;
+  }
+  
+  to {
+    width: 50%;
+    height: 100%;
+  }
+}
+
+.right-side form {
+  display: flex;
+  border-bottom: 2px solid var(--primary-color);
+  position: relative;
+  transition: border-radius 0.2s ease-in;
+  
+  &:has(input:not(:placeholder-shown)) {
+    border-radius: 0.5em;
+    
+    & button[type="submit"]{
+      margin-right: 0.3em;
+      padding: 5px;
+    }
+
+    & input[type="email"]{
+      padding: 1.4em 0.8em 0.7em 1em;
+    }
+
+    &::before,
+    &::after{
+      animation: BorderActivation 0.8s linear forwards;
+    }
+
+    &::before {
+      border-top-left-radius: 0.5em;
+      border-bottom-left-radius: 0.5em;
+      border-left: 2px solid var(--primary-color);
+      border-top: 2px solid var(--primary-color);
+    }
+
+    &::after {
+      border-top-right-radius: 0.5em;
+      border-bottom-right-radius: 0.5em;
+      border-right: 2px solid var(--primary-color);
+      border-top: 2px solid var(--primary-color);
+    }
+  }
+
+  &::before { /*border top and left*/
+    content: "";
+    position: absolute;
+    z-index: -1;
+    bottom: 0;
+    left: 0;
+  }
+  
+  &::after { /*border top and right*/
+    content: "";
+    position: absolute;
+    z-index: -1; /*this is used so that when its width expands the functionality of clicking the submit button isnt removed*/
+    bottom: 0;
+    right: 0;
+  }
+
+  & button[type="submit"], input {
+    border: none;
+    background: transparent;
+    padding-bottom: 0.4em;
+  }
+
+  & button[type="submit"] {
+    font-size: 1.4em;
+    align-self: center;
+    cursor: pointer;
+    border: 2px solid transparent;
+    border-radius: 0.5em;
+    padding: 1px;
+    transition: 
+    padding 0.3s ease-in,
+    margin 0.3s ease-in,
+    border-color 0.3s ease-in;
+
+    &:active {
+      scale: 0.95;
+    }
+
+    &:focus,
+    &:hover {
+      border-color: var(--primary-color);
+    }
+  }
+
+  & label {
+    position: absolute;
+    cursor: text;
+    top: calc(50%);
+    transform: translateY(-50%);
+    color: var(--primary-color);
+    opacity: 0.65;
+    font-size: 1.05em;
+    font-weight: 900;
+    transition-property: opacity, top, font-size;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-in;
+  }
+  
+  &:has(input:not(:placeholder-shown)) label{
+    opacity: 0.8;
+    top: 1em;
+    left: 0.7em;
+    translate: 0 0;
+    font-size: 0.75em;
+  }
+
+
+  & input[type="email"] {
+    padding: 0.7em 0.8em 0.7em 0em;
+    outline: none;
+    flex-grow: 1;
+    border-radius: 1em;
+    transition: padding 0.3s ease-in;
+
+    &::placeholder {
+      opacity: 0;
+    } 
+  }
+}
+
+.right-side .website-policy{
+  display: flex;
+  justify-content: flex-end; /*margin-left: auto;*/
+  gap: 2.5em;
+}

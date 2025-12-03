@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css");
+@import url("https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Nosifer&display=swap");
+
+html {
+  font-size: clamp(12px, 12px + 0.005vw, 14px);
+  font-family: 'Quicksand', Verdana, Geneva, Tahoma, sans-serif;
+  line-height: 1.1;
+}
+
+input, fieldset, button, textarea, legend, label {
+  font: inherit;
+}
+
+.uppercase {
+  text-transform: uppercase;
+  font-family: "Alfa Slab One";
+  letter-spacing: 0.05em;
+  font-weight: 100;
+}
+
+h1:has(.font-drippy),
+h2:has(.font-drippy),
+h3:has(.font-drippy),
+h4:has(.font-drippy),
+h5:has(.font-drippy),
+h6:has(.font-drippy) {
+  font-family: "Alfa Slab One";
+  letter-spacing: 0.05em;
+}

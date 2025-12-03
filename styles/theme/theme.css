@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Nosifer&display=swap');
+
+:root {
+  --primary-color: #c60016;
+  --background-primary-color: #fbdcc0;
+  --padding-left-right: 5rem;
+  --secondary-color: #faf4e6;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+body {
+  background-color: var(--background-primary-color);
+}
+
+.primary {
+  color: var(--primary-color);
+}
+
+.font-drippy {
+  font-family: 'Nosifer';
+}

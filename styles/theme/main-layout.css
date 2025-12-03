@@ -1,0 +1,27 @@
+body {
+  --padding-top-body: 1em;
+  padding-top: var(--padding-top-body);
+  min-height: 100dvh;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  overflow-x: hidden;
+  max-width: 2000px;
+
+  & footer, main {
+    width: 100%;
+    position: relative;
+
+    & section {
+      position: relative;
+    }
+  }
+}
+
+*:focus {
+  outline: none;
+}

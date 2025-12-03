@@ -1,0 +1,10 @@
+.background-lightning {
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  background-color: white;
+  width: 15em;
+  aspect-ratio: 1 / 1.2;
+  filter: blur(75px);
+  box-shadow: 0 0 20em rgb(255, 255, 255);
+}

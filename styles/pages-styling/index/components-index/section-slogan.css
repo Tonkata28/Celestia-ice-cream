@@ -1,0 +1,100 @@
+@keyframes makeSmallerSpecialButton {
+  from {
+    scale: 3;
+    rotate: 163deg;
+    opacity: 0;
+  }
+
+  to {
+    scale: 1;
+    opacity: 1;
+  }
+
+}
+
+@keyframes textVisualize {
+  from {
+    opacity: 0.2;
+    scale: 0.8;
+  }
+
+  to {
+    opacity: 1;
+    scale: 1;
+  }
+}
+
+main .slogan {
+  align-self: center;
+  display: flex;
+  justify-content: center;
+  width: 110%;
+  --parent-width: 1.1 * 100vw;
+  aspect-ratio: 2 / 1;
+  background-color: var(--primary-color);
+  border-radius: 50%;
+  border: 1em solid rgb(236, 208, 171);
+  view-timeline: --slogan-view-axis block;
+
+  & .content {
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    gap: 3rem;
+    position: relative;
+    transform: translateY(calc(var(--parent-width) * 0.1));
+    color: white;
+    
+    & h2 {
+      text-align: center;
+      max-width: 22ch;
+      font-size: 3.5em;
+      line-height: 1.4;
+
+      & span:not(.special) {
+        display: inline-block;
+        animation: textVisualize auto linear both;
+        animation-timeline: --slogan-view-axis;
+        animation-range: entry 30% entry 90%;
+      }
+
+      & span.special{
+        display: inline-block;
+        background-color: var(--background-primary-color);
+        border-radius: 0.5em;
+        border: 1rem solid var(--primary-color);
+        rotate: 7deg;
+        padding: 0.3em 0.5em;
+        position: relative;
+        z-index: 100;
+        transition: background-color 0.2s ease-in,
+        border-color 0.2s ease-in,
+        color 0.2s ease-in,
+        rotate 0.2s linear;
+        animation: makeSmaller auto linear both;
+        animation-timeline: --slogan-view-axis;
+        animation-range: entry 30% entry 75%;
+
+        &:hover {
+          rotate: -7deg;
+          background-color: transparent;
+          color: var(--background-primary-color);
+          border-color: var(--background-primary-color);
+        }
+      }
+    }
+
+    & p{
+      max-width: 35ch;
+      text-align: center;
+      align-self: center;
+      line-height: 1.5;
+      font-size: 1.1em;
+
+      animation: textVisualize auto linear both;
+      animation-timeline: --slogan-view-axis;
+      animation-range: entry 70% entry 90%;
+    }
+
+  }
+}

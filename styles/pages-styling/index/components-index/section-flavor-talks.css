@@ -1,0 +1,183 @@
+@keyframes cardsWiggle {
+  from {
+    rotate: calc(var(--base-rotation));
+  }
+  
+  to {
+    rotate: 0deg;
+    z-index: 10;
+    scale: 1.06;
+  }
+}
+
+@keyframes cardsWiggleBack {
+  from {
+    rotate: 0deg;
+    z-index: 10;
+    scale: 1.06;
+  }
+
+  to {
+    rotate: var(--base-rotation);
+  }
+}
+
+main .flavor-talks {
+  padding: 5em calc(var(--padding-left-right) + 10em);
+  view-timeline: --flavor-talks-view-timeline;
+
+  & .background-lightning {
+    top: 25%;
+  }
+}
+
+.flavor-talks h2 {
+  font-size: 4em;
+  text-align: center;
+  padding-bottom: 2em;
+
+  animation: makeSmaller auto linear both; /*animation is declared in .best-sellers styles*/
+  animation-timeline: --flavor-talks-view-timeline;
+  animation-range: entry 0% entry 50%;
+}
+
+.flavor-talks .cards-container {
+  display: flex;
+  justify-content: center;
+}
+
+.flavor-talks .cards-container .card{
+  flex: 1 1 20%;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  margin: 0 -2em;
+  background-color: white;
+  border-radius: 1em;
+  transition: 
+  background-color 0.2s ease-in;
+  
+  &:nth-child(odd){
+    background-color: var(--background-primary-color);
+
+    & .icon{
+      font-size: 2.5em;
+    }
+  }
+
+  &:nth-child(1){
+    --base-rotation: -8deg;
+    rotate: var(--base-rotation);
+  }
+
+  &:nth-child(2){
+    --base-rotation: -13deg;
+    rotate: var(--base-rotation);
+  }
+
+  &:nth-child(3){
+    --base-rotation: 4deg;
+    rotate: var(--base-rotation);
+  }
+
+  &:nth-child(4){
+    --base-rotation: 15deg;
+    rotate: var(--base-rotation);
+  }
+
+  &:nth-child(5){
+    --base-rotation: -10deg;
+    rotate: var(--base-rotation);
+  }
+
+  &:hover,
+  &:focus{
+    animation: cardsWiggle 0.3s linear forwards;
+  }
+  
+  &:not(:hover):not(:focus){
+    animation: cardsWiggleBack 0.3s linear;
+  }
+}
+
+
+.flavor-talks .cards-container .card.review-card {
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2em;
+  padding: 1em;
+  border: 0.5rem solid white;
+}
+
+.flavor-talks .cards-container .card.review-card .card-review {
+  
+  & .icon{
+    padding-bottom: 0.5rem;
+    margin-left: -0.2em;
+  }
+  
+  & p {
+    line-height: 1.3;
+    font-size: 0.9em;
+    letter-spacing: 0.05rem;
+    max-width: 30ch;
+  }
+}
+
+.flavor-talks .cards-container .card.review-card .author-info {
+  display: flex;
+  align-items: center;
+  gap: 0.8em;
+  
+  & .author-desc {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    font-size: 0.7em;
+  }
+  
+  & .author-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 3em;
+    border-radius: 50%;
+    aspect-ratio: 1 / 1;
+    background-color: var(--primary-color);
+    overflow: clip;
+    
+    & img{
+      width: auto;
+      height: 100%;
+    }
+  }
+}
+
+.flavor-talks .cards-container .card:not(.review-card){
+  position: relative;
+  border: 0.5rem solid white;
+  background-color: var(--secondary-color); /*just in case the img is transparent or not big enough*/
+  
+  &::before {
+    content: "";
+    position: absolute;
+    z-index: 10;
+    background-color: rgb(0, 0, 0, 0.1);
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    transition: background-color 0.3s ease-in;
+  }
+  
+  &:hover::before,
+  &:focus:before {
+    background-color: transparent;
+  }
+}
+
+.flavor-talks .cards-container .card:not(.review-card) img{
+  display: block;
+  align-self: center;
+  border-radius: 1em;
+  width: 100%;
+  height: auto;
+}

@@ -1,0 +1,11 @@
+@import url(components-index/section-intro.css);
+@import url(components-index/section-slogan.css);
+@import url(components-index/section-best-sellers.css);
+@import url(components-index/section-products-quality.css);
+@import url(components-index/section-flavor-talks.css);
+
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 15vh;
+}
